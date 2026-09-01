@@ -17,11 +17,11 @@ class Solution:
         #   'db1':   1D list (gradient w.r.t. b1, rounded to 4 decimals)
         #   'dW2':   2D list (gradient w.r.t. W2, rounded to 4 decimals)
         #   'db2':   1D list (gradient w.r.t. b2, rounded to 4 decimals)
-        x = np.array(x, dtype=float)
-        W1 = np.array(W1, dtype=float)
-        b1 = np.array(b1, dtype=float)
+        # x = np.array(x, dtype=float)
+        # W1 = np.array(W1, dtype=float)
+        # b1 = np.array(b1, dtype=float)
         W2 = np.array(W2, dtype=float)
-        b2 = np.array(b2, dtype=float)
+        # b2 = np.array(b2, dtype=float)
         y_true = np.array(y_true, dtype=float)
 
         z1 = np.dot(W1, x) + b1
