@@ -23,20 +23,19 @@ class Solution:
         W2 = np.array(W2, dtype=float)
         b2 = np.array(b2, dtype=float)
         y_true = np.array(y_true, dtype=float)
-        
-        linear1 = np.dot(W1, x) + b1
-        re = np.maximum(linear1, 0)
-        y_pred = np.dot(W2, re) + b2
 
-        loss = np.mean((y_pred - y_true) ** 2)
+        z1 = np.dot(W1, x) + b1
+        a1 = np.maximum(z1, 0)
+        z2 = np.dot(W2, a1) + b2
 
-        dl = 2 * (y_pred - y_true) / len(y_pred)
-        dW2 = np.outer(dl, re)
+        loss = np.mean((z2 - y_true) ** 2)
+
+        dl = 2 * (z2 - y_true) / len(z2)
+        dW2 = np.outer(dl, a1)
         db2 = dl
-        dy1 = np.dot(W2.T, dl)
-        dz1 = dy1 * (linear1 > 0)
-        dW1 = np.outer(dz1, x)
-        db1 = dz1
+        da1 = np.dot(W2.T, dl) * (z1 > 0)
+        dW1 = np.outer(da1, x)
+        db1 = da1
 
         return {
             "loss": round(float(loss), 4),
